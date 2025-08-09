@@ -1,0 +1,176 @@
+ 
+ Inicio da exibição de uma Collection 
+ Inicio de uma serie de genre = 
+
+[
+ Inicio da Exibição de um Gênero.
+ Years = Action
+ Inicio da exibição de uma serie de Decadas = 
+ 
+[
+ Inicio da Exibição de uma Decada.
+ Years = 1980s
+
+ Inicio da exibição de uma serie de Filmes = 
+ 
+[
+Inicio de um Filme 
+
+ title = Indiana Jones: The raiders of the lost Ark
+ favorite = true
+ format = DVD
+ year = 1981
+ rating = PG
+ description = 
+                    'Archaeologist and adventurer Indiana Jones
+                    is hired by the U.S. government to find the Ark of the
+                    Covenant before the Nazis.'
+                
+
+ Inicio de um Filme 
+, 
+Inicio de um Filme 
+
+ title = THE KARATE KID
+ favorite = true
+ format = DVD,Online
+ year = 1984
+ rating = PG
+ description = None provided.
+
+ Inicio de um Filme 
+, 
+Inicio de um Filme 
+
+ title = Back 2 the Future
+ favorite = false
+ format = Blu-ray
+ year = 1985
+ rating = PG
+ description = Marty McFly
+
+ Inicio de um Filme 
+]
+ 
+
+ Fim da exibição de uma serie de Filmes 
+ Fim da Exibição de uma Decada.
+, 
+ Inicio da Exibição de uma Decada.
+ Years = 1990s
+
+ Inicio da exibição de uma serie de Filmes = 
+ 
+[
+Inicio de um Filme 
+
+ title = X-Men
+ favorite = false
+ format = DVD, digital
+ year = 2000
+ rating = PG13
+ description = Two mutants come to a private academy for their kind whose resident
+                    superhero team must oppose a terrorist organization with similar powers.
+
+ Inicio de um Filme 
+, 
+Inicio de um Filme 
+
+ title = Batman Returns
+ favorite = true
+ format = VHS
+ year = 1992
+ rating = PG13
+ description = NA.
+
+ Inicio de um Filme 
+, 
+Inicio de um Filme 
+
+ title = Reservoir Dogs
+ favorite = false
+ format = Online
+ year = 1992
+ rating = R
+ description = WhAtEvER I Want!!!?!
+
+ Inicio de um Filme 
+]
+ 
+
+ Fim da exibição de uma serie de Filmes 
+ Fim da Exibição de uma Decada.
+]
+ 
+ Fim da exibição de uma serie de Decadas 
+ Fim da Exibição de uma Gênero.
+, 
+ Inicio da Exibição de um Gênero.
+ Years = Thriller
+ Inicio da exibição de uma serie de Decadas = 
+ 
+[
+ Inicio da Exibição de uma Decada.
+ Years = 1970s
+
+ Inicio da exibição de uma serie de Filmes = 
+ 
+[
+Inicio de um Filme 
+
+ title = ALIEN
+ favorite = false
+ format = DVD
+ year = 1979
+ rating = R
+ description = """""""""
+
+ Inicio de um Filme 
+]
+ 
+
+ Fim da exibição de uma serie de Filmes 
+ Fim da Exibição de uma Decada.
+, 
+ Inicio da Exibição de uma Decada.
+ Years = 1980s
+
+ Inicio da exibição de uma serie de Filmes = 
+ 
+[
+Inicio de um Filme 
+
+ title = Ferris Bueller's Day Off
+ favorite = true
+ format = DVD
+ year = 1986
+ rating = PG13
+ description = Funny movie about a funny guy
+
+ Inicio de um Filme 
+, 
+Inicio de um Filme 
+
+ title = American Psycho
+ favorite = false
+ format = Blu-ray
+ year = 2000
+ rating = R
+ description = psychopathic Bateman
+
+ Inicio de um Filme 
+]
+ 
+
+ Fim da exibição de uma serie de Filmes 
+ Fim da Exibição de uma Decada.
+]
+ 
+ Fim da exibição de uma serie de Decadas 
+ Fim da Exibição de uma Gênero.
+]
+
+ Fim de uma serie de genre = 
+
+
+ FIm da exibição de uma Collection 
