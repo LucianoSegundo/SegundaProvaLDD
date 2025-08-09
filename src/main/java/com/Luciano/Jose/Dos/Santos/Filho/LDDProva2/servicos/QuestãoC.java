@@ -1,13 +1,17 @@
 package com.Luciano.Jose.Dos.Santos.Filho.LDDProva2.servicos;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -17,14 +21,18 @@ import com.Luciano.Jose.Dos.Santos.Filho.LDDProva2.entidades.Decade;
 import com.Luciano.Jose.Dos.Santos.Filho.LDDProva2.entidades.Movie;
 
 public class QuestãoC extends DefaultHandler {
-	private String arquivo = "";
+	
 	String baseUsi = "src/main/resources/";
+	
 	private Set<Decade> decadas = new LinkedHashSet<Decade>();
-	private List<Movie> movies = new ArrayList<Movie>();
 	private Decade temporaria;
 	private boolean filmeBolean = false;
-	private boolean DecadaBolean = false;
+	
+	XMLOutputFactory factory = XMLOutputFactory.newInstance();
 
+    XMLStreamWriter writer ;
+
+	
 	public void executar() {
 		File aequivo = new File(baseUsi + "movies.xml");
 		QuestãoC qquestap = new QuestãoC();
@@ -40,8 +48,38 @@ public class QuestãoC extends DefaultHandler {
 
 	@Override
 	public void startDocument() throws SAXException {
-		this.arquivo = "<html> \n" + "<table>\n" + "<thead>\n" + "<tr>\n" + "<th> Decade </th>\n"
-				+ "<th> Quantity </th>\n" + "</tr>\n" + "</thead>\n" + "<tbody> \n";
+		
+        try {
+        	writer = factory.createXMLStreamWriter(new FileOutputStream(baseUsi+"respostas/QuestaoC.xml"), "UTF-8");
+
+			 writer.writeStartDocument("UTF-8", "1.0");
+			 
+		 writer.writeStartElement("html");	 
+			 writer.writeStartElement("table");
+			 	writer.writeStartElement("thead");
+			 		writer.writeStartElement("tr");
+			 			writer.writeStartElement("th");
+			 				writer.writeCharacters(" Decade ");
+			 			writer.writeEndElement();
+			 			writer.writeStartElement("th");
+			 				writer.writeCharacters(" Quantity ");
+			 			writer.writeEndElement();
+			 		writer.writeEndElement(); //fecha tr
+		 		writer.writeEndElement(); //fecha thead
+		 		writer.writeStartElement("tbody");
+			 
+		} 
+        catch (XMLStreamException e) {
+        	
+			e.printStackTrace();
+			
+			}
+        catch (FileNotFoundException e) {
+        	
+			e.printStackTrace();
+			
+		}
+
 	};
 
 	@Override
@@ -53,7 +91,6 @@ public class QuestãoC extends DefaultHandler {
 
 			this.temporaria = decada;
 			System.out.println("decada "+atts.getValue("years"));
-			this.DecadaBolean = true;
 		}
 
 		if (qName.equals("year")) {
@@ -71,42 +108,56 @@ public class QuestãoC extends DefaultHandler {
 	                }
 	            }
 	        }
-	        DecadaBolean = false;
 	    }
 	};
  
 	@Override
 	public void endDocument() throws SAXException {
-
+		try {
 		for (Decade decade : decadas) {
 	        int contador = 0;
-
-	        this.arquivo += "<tr>\n";
-	        this.arquivo += "<td> " + decade.getYears() + " </td>\n";
-
+	        
+	        writer.writeStartElement("tr");
+	        	writer.writeStartElement("td");
+	        		writer.writeCharacters(" " + decade.getYears() + " ");
+	      
+	        	writer.writeEndElement(); // fechando td
+	        	
 	        String valor = decade.getYears().replaceFirst("s", "").trim();
-	        int data = Integer.parseInt(valor);
+	        	   valor = valor.replaceFirst(" ", "").trim();
+	        
+	        int ano = Integer.parseInt(valor);
 
-	        System.out.println("data = " + data);
+	        System.out.println("Ano = " + ano);
 
 	        for (Movie movie : decade.getMovies()) {
 	            int filme = Integer.parseInt(movie.getYear());
 	            System.out.println("filme = " + filme);
 	            contador++;
 	        }
+	        writer.writeStartElement("td");
+    			writer.writeCharacters(" " + contador  + " ");
+    		writer.writeEndElement(); // fechando td
 
-	        this.arquivo += "<td> " + contador + " </td>\n";
-	        this.arquivo += "</tr>\n";
+    		writer.writeEndElement(); // fechando tr
+
 	    }
 
-	    this.arquivo += "</tbody>\n</table>\n</html>\n";
+ 		writer.writeEndElement(); //fecha tbody
+ 		writer.writeEndElement(); //fecha table
+	
+			writer.writeEndElement();//fecha fecha html
+			
+			 writer.flush();
+	            writer.close();
+		} catch (XMLStreamException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+	    System.out.println("Impresso no arquivo QuestaoC.xml, presente em resource/respostas\n");
 
-	    System.out.println(arquivo);
-	    System.out.println("Impresso no arquivo QuestaoC.html e QuestaoC.xml, presente em resource/respostas\n");
-
-	    new EscreverArquivo().escrever(baseUsi + "respostas/QuestaoC.html", arquivo);
-	    new EscreverArquivo().escrever(baseUsi + "respostas/QuestaoC.xml", arquivo);
-	}
+	  	}
 
 	
 	public void characters(char ch[], int start, int length) throws SAXException {
